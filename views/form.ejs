@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Consultation Form</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        /* Reset some basic elements for consistency across browsers */
+        body, h1, h2, h3, p, ul, li, a, table, th, td {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure full height of viewport */
+        }
+
+        /* Header styling */
+        header {
+            background-color: #5cb85c; /* Changed to green */
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        .banner {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            width: 80px; /* Adjust width as needed */
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .container-header {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between; /* Align items evenly */
+            align-items: center; /* Center vertically */
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: right; /* Align text to the right */
+        }
+
+        nav ul li {
+            display: inline;
+            margin-left: 15px;
+        }
+
+        nav ul li:first-child {
+            margin-left: 0; /* Remove margin from the first child */
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            margin-right: 15px;
+            text-transform: uppercase; /* Uppercase text */
+            padding: 10px 20px; /* Padding for button-like appearance */
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.3s; /* Smooth background color transition */
+        }
+
+        nav a:hover {
+            background-color: #4cae4c; /* Darker green on hover */
+        }
+
+        /* Main content container */
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        table tr {
+            margin-bottom: 10px;
+        }
+
+        table td {
+            padding: 10px 0;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="file"],
+        button {
+            width: calc(100% - 22px); /* Adjust width to compensate for border and padding */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="file"] {
+            padding: 7px; /* Adjust padding for file input */
+        }
+
+        button {
+            background-color: #5cb85c;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #4cae4c;
+        }
+
+        /* Footer styling */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            margin-top: auto; /* Push footer to the bottom */
+        }
+
+        .footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container-header">
+            <h1>Medfile Manager</h1>
+            <img src="https://i.etsystatic.com/26658960/r/il/e884b9/3814251269/il_fullxfull.3814251269_aqz2.jpg" alt="Medical Records Banner" class="banner">
+            <nav>
+                <ul>
+                    <li><a href="/home" class="button-link">Home</a></li>
+                    <li><a href="/profile" class="button-link">Profile</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Medical Consultation Form</h1>
+        <form id="consultation-form" action="/form" method="post" enctype="multipart/form-data">
+            <table>
+                <tr>
+                    <td>
+                        <label for="consultation-date">Consultation Date</label><br>
+                        <input type="date" id="consultation-date" name="consultation_date" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="hospital-name">Hospital Name</label><br>
+                        <input type="text" id="hospital-name" name="hospital_name" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="doctor-name">Doctor's Name</label><br>
+                        <input type="text" id="doctor-name" name="doctor_name" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="doctor-specialisation">Doctor Specialisation</label><br>
+                        <input type="text" id="doctor-specialisation" name="doctor_specialisation" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="prescriptions">Prescriptions (PDF)</label><br>
+                        <input type="file" id="prescriptions" name="prescriptions" accept=".pdf" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="medical-report">Medical Report (PDF)</label><br>
+                        <input type="file" id="medical-report" name="medical_report" accept=".pdf" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="next-consultation-date">Next Consultation Date</label><br>
+                        <input type="date" id="next-consultation-date" name="next_consultation_date">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="additional-documents">Additional Documents</label><br>
+                        <input type="file" id="additional-documents" name="additional_documents" accept=".pdf">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button type="submit">Submit</button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Medical Records Management. All rights reserved.</p>
+    </div>
+</body>
+
+</html>

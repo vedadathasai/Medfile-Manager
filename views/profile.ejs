@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        /* Reset basic elements */
+        body, h1, h2, h3, p, ul, li, a, table, th, td {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure full height of viewport */
+        }
+
+        /* Header styling */
+        header {
+            background-color: #5cb85c; /* Changed to green */
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        .container-header {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between; /* Align items evenly */
+            align-items: center; /* Center vertically */
+        }
+
+        .banner {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            width: 80px; /* Adjust width as needed */
+            height: auto;
+            border-radius: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: right; /* Align text to the right */
+        }
+
+        nav ul li {
+            display: inline;
+            margin-left: 15px;
+        }
+
+        nav ul li:first-child {
+            margin-left: 0; /* Remove margin from the first child */
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            margin-right: 15px;
+            text-transform: uppercase; /* Uppercase text */
+            padding: 10px 20px; /* Padding for button-like appearance */
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.3s; /* Smooth background color transition */
+        }
+
+        nav a:hover {
+            background-color: #4cae4c; /* Darker green on hover */
+        }
+
+        /* Main container */
+        .container {
+            max-width: 600px;
+            margin: 20px auto; /* Center the container */
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            flex: 1; /* Take remaining space */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-info {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .profile-info label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .profile-info p {
+            margin-bottom: 0;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 20px; /* Adjust top margin for spacing */
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #5cb85c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #4cae4c;
+        }
+
+        /* Footer styling */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            margin-top: auto; /* Push footer to the bottom */
+        }
+
+        .footer p {
+            margin: 0;
+        }
+        /* Profile info box styling */
+.profile-info {
+    display: flex;
+    align-items: center;
+}
+
+.profile-info label {
+    font-weight: bold;
+    flex: 0 0 150px; /* Fixed width for labels */
+}
+
+.profile-info p {
+    margin-bottom: 10px;
+    flex: 1; /* Take remaining space */
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container-header">
+            <h1>MEDLIFE MANAGER</h1>
+            <img src="https://i.etsystatic.com/26658960/r/il/e884b9/3814251269/il_fullxfull.3814251269_aqz2.jpg" alt="Medical Records Banner" class="banner">
+            <nav>
+                <ul>
+                    <li><a href="/home" class="button-link">Home</a></li>
+                    <li><a href="/profile" class="button-link">Profile</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>User Profile</h1>
+        <div class="profile-info">
+            <label for="firstName">First Name:</label>
+            <p><%= user.firstName %></p>
+        </div>
+        <div class="profile-info">
+            <label for="lastName">Last Name:</label>
+            <p><%= user.lastName %></p>
+        </div>
+        <div class="profile-info">
+            <label for="gender">Gender:</label>
+            <p><%= user.gender %></p>
+        </div>
+        <div class="profile-info">
+            <label for="dob">Date of Birth:</label>
+            <p><%= user.dob %></p>
+        </div>
+        <div class="profile-info">
+            <label for="mobile">Mobile Number:</label>
+            <p><%= user.mobile %></p>
+        </div>
+        <div class="profile-info">
+            <label for="email">Email:</label>
+            <p><%= user.email %></p>
+        </div>
+        <div class="profile-info">
+            <label for="bloodGroup">Blood Group:</label>
+            <p><%= user.bloodGroup %></p>
+        </div>
+        <div class="profile-info">
+            <label for="emergencyContact">Emergency Contact:</label>
+            <p><%= user.emergencyContact %></p>
+        </div>
+        <div class="btn-container">
+            <button class="btn" onclick="window.location.href='/home'">Back to Home</button>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Medical Records Management. All rights reserved.</p>
+    </div>
+</body>
+
+</html>

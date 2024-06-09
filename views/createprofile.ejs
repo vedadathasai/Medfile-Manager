@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 10px 0;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #5cb85c;
+            color: white;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #5cb85c;
+        }
+        .error {
+            color: red;
+            font-size: 0.875em;
+        }
+        .note {
+            font-size: 0.875em;
+            color: red;
+        }
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+        .container-header {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between; /* Align items evenly */
+            align-items: center; /* Center vertically */
+        }
+        header {
+            background-color: #5cb85c; /* Changed to green */
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .banner {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            width: 80px; /* Adjust width as needed */
+            height: auto;
+            border-radius: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: right; /* Align text to the right */
+        }
+
+        nav ul li {
+            display: inline;
+            margin-left: 15px;
+        }
+
+        nav ul li:first-child {
+            margin-left: 0; /* Remove margin from the first child */
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            margin-right: 15px;
+            text-transform: uppercase; /* Uppercase text */
+            padding: 10px 20px; /* Padding for button-like appearance */
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.3s; /* Smooth background color transition */
+        }
+
+        nav a:hover {
+            background-color: #4cae4c; /* Darker green on hover */
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container-header">
+            <h1>Medfile Manager</h1>
+            <img  src="https://i.etsystatic.com/26658960/r/il/e884b9/3814251269/il_fullxfull.3814251269_aqz2.jpg" alt="Medical Records Banner" class="banner">
+            <nav>
+                <ul>
+                    <li><a href="/home" class="button-link">Home</a></li>
+                    <li><a href="/profile" class="button-link">Profile</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <form method="post" action="/createprofile" id="profileForm">
+            <table>
+                <tr>
+                    <td><label for="firstName">First Name:</label></td>
+                    <td><input type="text" id="firstName" name="firstName" required></td>
+                </tr>
+                <tr>
+                    <td><label for="lastName">Last Name:</label></td>
+                    <td><input type="text" id="lastName" name="lastName" required></td>
+                </tr>
+                <tr>
+                    <td><label for="gender">Gender:</label></td>
+                    <td>
+                        <select id="gender" name="gender" required>
+                            <option value="">Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="dob">Date of Birth:</label></td>
+                    <td><input type="date" id="dob" name="dob" required></td>
+                </tr>
+                <tr>
+                    <td><label for="mobile">Mobile Number (India +91):</label></td>
+                    <td><input type="tel" id="mobile" name="mobile" required pattern="[6-9][0-9]{9}"></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email:</label></td>
+                    <td><input type="email" id="email" name="email" required></td>
+                </tr>
+                <tr>
+                    <td><label for="bloodGroup">Blood Group:</label></td>
+                    <td>
+                        <select id="bloodGroup" name="bloodGroup" required>
+                            <option value="">Select Blood Group</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="emergencyContact">Emergency Contact Number:</label></td>
+                    <td><input type="tel" id="emergencyContact" name="emergencyContact" required pattern="[6-9][0-9]{9}"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="note">In case of emergency, calls and messages are sent to this number.</td>
+                </tr>
+                <tr>
+                    <td><label for="password">Password:</label></td>
+                    <td><input type="password" id="password" name="password" required></td>
+                </tr>
+                <tr>
+                    <td><label for="confirmPassword">Confirm Password:</label></td>
+                    <td><input type="password" id="confirmPassword" name="confirmPassword" required></td>
+                </tr>
+            </table>
+            <button type="submit">CREATE PROFILE</button>
+            <div id="errorMessage" class="error"></div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('profileForm').addEventListener('submit', function(event) {
+            let form = event.target;
+            let errorMessage = '';
+
+            if (!form.firstName.value) {
+                errorMessage += 'First Name is required.<br>';
+            }
+            if (!form.lastName.value) {
+                errorMessage += 'Last Name is required.<br>';
+            }
+            if (!form.gender.value) {
+                errorMessage += 'Gender is required.<br>';
+            }
+            if (!form.dob.value) {
+                errorMessage += 'Date of Birth is required.<br>';
+            }
+            if (!form.mobile.value || !/^[6-9][0-9]{9}$/.test(form.mobile.value)) {
+                errorMessage += 'Valid Indian Mobile Number is required.<br>';
+            }
+            if (!form.email.value) {
+                errorMessage += 'Email is required.<br>';
+            }
+            if (!form.bloodGroup.value) {
+                errorMessage += 'Blood Group is required.<br>';
+            }
+            if (!form.emergencyContact.value || !/^[6-9][0-9]{9}$/.test(form.emergencyContact.value)) {
+                errorMessage += 'Valid Indian Emergency Contact Number is required.<br>';
+            }
+            if (form.mobile.value === form.emergencyContact.value) {
+                errorMessage += 'Mobile Number and Emergency Contact Number cannot be the same.<br>';
+            }
+            if (!form.password.value) {
+                errorMessage += 'Password is required.<br>';
+            }
+            if (form.password.value !== form.confirmPassword.value) {
+                errorMessage += 'Passwords do not match.<br>';
+            }
+
+            if (errorMessage) {
+                event.preventDefault();
+                document.getElementById('errorMessage').innerHTML = errorMessage;
+            }
+        });
+    </script>
+<div class="footer">
+    <p>&copy; 2024 Medical Records Management. All rights reserved.</p>
+</div>
+
+</body>
+</html>
